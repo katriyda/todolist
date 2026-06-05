@@ -1,6 +1,6 @@
 ## 状态管理 + 持久化
 
-**Status:** ready-for-agent
+**Status:** done
 
 ### 描述
 

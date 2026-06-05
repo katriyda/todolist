@@ -1,6 +1,6 @@
 ## 核心组件
 
-**Status:** ready-for-agent
+**Status:** done
 
 ### 描述
 
