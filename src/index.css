@@ -8,9 +8,8 @@
   --c-bg:          #FAFAFA;
   --c-surface:     #FFFFFF;
   --c-surface-dim: #F4F4F5;
-  --c-border:      #E4E4E7;
-  --c-border-faint:#F0F0F2;
-  --c-divider:     #E8E8EC;
+  --c-border:      #D4D4D8;
+  --c-divider:     #E4E4E7;
 
   /* ---- Color: Text ---- */
   --c-text:        #18181B;
@@ -71,9 +70,8 @@
     --c-bg:          #111113;
     --c-surface:     #1C1C1F;
     --c-surface-dim: #17171A;
-    --c-border:      #27272A;
-    --c-border-faint:#1F1F22;
-    --c-divider:     #232326;
+    --c-border:      #3F3F46;
+    --c-divider:     #27272A;
 
     --c-text:        #F4F4F5;
     --c-text-2:      #A1A1AA;
@@ -100,9 +98,8 @@
   --c-bg:          #111113;
   --c-surface:     #1C1C1F;
   --c-surface-dim: #17171A;
-  --c-border:      #27272A;
-  --c-border-faint:#1F1F22;
-  --c-divider:     #232326;
+  --c-border:      #3F3F46;
+  --c-divider:     #27272A;
 
   --c-text:        #F4F4F5;
   --c-text-2:      #A1A1AA;

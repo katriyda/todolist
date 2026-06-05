@@ -102,6 +102,7 @@
   border: 1px solid var(--c-border);
   border-radius: var(--r-lg);
   padding: 3px;
+  box-shadow: var(--shadow-xs);
   transition: border-color 300ms var(--ease-smooth),
               box-shadow 300ms var(--ease-smooth);
 }
@@ -179,9 +180,10 @@
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   background: var(--c-surface);
-  border: 1px solid var(--c-border-faint);
+  border: 1px solid var(--c-border);
   border-radius: var(--r-md);
-  transition: all 200ms var(--ease-smooth);
+  transition: border-color 200ms var(--ease-smooth),
+              box-shadow 200ms var(--ease-smooth);
 }
 
 .todo-search-inner:focus-within {
@@ -251,50 +253,38 @@
 }
 
 .filter-buttons {
-  display: flex;
+  display: inline-flex;
   margin-left: auto;
-  background: var(--c-surface-dim);
+  background: var(--c-surface);
   border-radius: var(--r-sm);
-  border: 1px solid var(--c-border-faint);
-  overflow: hidden;
+  border: 1px solid var(--c-border);
+  padding: 2px;
+  gap: 2px;
 }
 
 .filter-buttons button {
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 500;
-  padding: 0.375rem 0.75rem;
+  padding: 0.3125rem 0.6875rem;
   border: none;
+  border-radius: calc(var(--r-sm) - 1px);
   background: transparent;
   color: var(--c-text-3);
   cursor: pointer;
-  transition: all 150ms var(--ease-smooth);
-  position: relative;
-}
-
-.filter-buttons button:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 25%;
-  height: 50%;
-  width: 1px;
-  background: var(--c-divider);
+  transition: color 150ms, background 150ms;
 }
 
 .filter-buttons button:hover {
   color: var(--c-text-2);
+  background: var(--c-surface-dim);
 }
 
 .filter-buttons button[aria-pressed='true'] {
   font-weight: 600;
-  color: var(--c-accent);
-  background: var(--c-surface);
+  color: var(--c-text);
+  background: var(--c-surface-dim);
   box-shadow: var(--shadow-xs);
-}
-
-.filter-buttons button[aria-pressed='true']::after {
-  display: none;
 }
 
 .clear-completed-btn {
@@ -368,7 +358,7 @@
 }
 
 .todo-item + .todo-item {
-  border-top: 1px solid var(--c-border-faint);
+  border-top: 1px solid var(--c-divider);
 }
 
 .todo-item:hover {
