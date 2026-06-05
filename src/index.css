@@ -1,57 +1,88 @@
 /* ============================================
-   Design Tokens — Soft Structuralism
-   Chinese-optimized, no external fonts
+   Design Tokens — Soft Structuralism 2.0
+   Warm neutral palette, Geist typography
+   No AI-purple, no generic aesthetics
    ============================================ */
 
+/* ---- Geist Variable Fonts (local) ---- */
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
-  /* ---- Color: Neutral Scale (Zinc-tinted warm) ---- */
-  --c-bg:          #FAFAFA;
+  /* ---- Color: Neutral Scale (warm-tinted stone) ---- */
+  --c-bg:          #F8F7F4;
   --c-surface:     #FFFFFF;
-  --c-surface-dim: #F4F4F5;
-  --c-border:      #D4D4D8;
-  --c-divider:     #E4E4E7;
+  --c-surface-dim: #F0EFEC;
+  --c-border:      #D6D3CE;
+  --c-divider:     #E8E6E1;
 
-  /* ---- Color: Text ---- */
-  --c-text:        #18181B;
-  --c-text-2:      #52525B;
-  --c-text-3:      #A1A1AA;
-  --c-text-inv:    #FAFAFA;
+  /* ---- Color: Text (off-black, never pure black) ---- */
+  --c-text:        #1A1A1A;
+  --c-text-2:      #5C5C5C;
+  --c-text-3:      #9C9C9C;
+  --c-text-inv:    #FAFAF8;
 
-  /* ---- Color: Accent (Indigo, muted < 80% sat) ---- */
-  --c-accent:      #4F46E5;
-  --c-accent-hover:#4338CA;
-  --c-accent-soft: #EEF2FF;
-  --c-accent-ring: rgba(79, 70, 229, 0.15);
+  /* ---- Color: Accent (warm slate, not AI-purple) ---- */
+  --c-accent:      #3D3D4E;
+  --c-accent-hover:#2A2A38;
+  --c-accent-soft: #EEEDE8;
+  --c-accent-ring: rgba(61, 61, 78, 0.12);
 
   /* ---- Color: Semantic ---- */
-  --c-danger:      #DC2626;
-  --c-danger-soft: #FEF2F2;
-  --c-success:     #16A34A;
-  --c-success-soft:#F0FDF4;
+  --c-danger:      #C4421A;
+  --c-danger-soft: #FDF0EC;
+  --c-success:     #3A7D44;
+  --c-success-soft:#EDF7EF;
 
-  /* ---- Color: Shadows ---- */
-  --shadow-xs:     0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:     0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:     0 4px 12px rgba(0,0,0,0.07);
+  /* ---- Color: Tag palette (desaturated, muted) ---- */
+  --tag-rose:      #E8D5D0;
+  --tag-rose-text: #8B5E54;
+  --tag-sky:       #D0DDE8;
+  --tag-sky-text:  #4E6B82;
+  --tag-sage:      #D4E0D0;
+  --tag-sage-text: #4E6B4E;
+  --tag-amber:     #E8DDD0;
+  --tag-amber-text:#7A6544;
+
+  /* ---- Shadows (tinted warm, not pure black) ---- */
+  --shadow-xs:     0 1px 2px rgba(40, 36, 28, 0.04);
+  --shadow-sm:     0 1px 3px rgba(40, 36, 28, 0.06), 0 1px 2px rgba(40, 36, 28, 0.03);
+  --shadow-md:     0 4px 16px rgba(40, 36, 28, 0.08);
+  --shadow-lg:     0 8px 32px rgba(40, 36, 28, 0.10);
   --shadow-focus:  0 0 0 3px var(--c-accent-ring);
 
   /* ---- Radius ---- */
+  --r-xs:  4px;
   --r-sm:  6px;
   --r-md:  10px;
   --r-lg:  14px;
+  --r-xl:  20px;
   --r-pill:9999px;
 
-  /* ---- Motion ---- */
+  /* ---- Motion (spring-based, not linear) ---- */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-snap:   cubic-bezier(0.2, 0, 0, 1);
 
   /* ---- Typography ---- */
-  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
-               "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
-               "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", Consolas,
-               "Source Code Pro", monospace;
+  --font-sans: "Geist", "Geist Sans", -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+               "Microsoft YaHei", sans-serif;
+  --font-mono: "Geist Mono", "SF Mono", "Fira Code", Consolas, monospace;
 
   font-family: var(--font-sans);
   font-size: 15px;
@@ -60,64 +91,84 @@
   background: var(--c-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1, "cv01" 1;
   color-scheme: light dark;
 }
 
 /* ---- Dark Theme (auto) ---- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --c-bg:          #111113;
-    --c-surface:     #1C1C1F;
-    --c-surface-dim: #17171A;
-    --c-border:      #3F3F46;
-    --c-divider:     #27272A;
+    --c-bg:          #111110;
+    --c-surface:     #1A1918;
+    --c-surface-dim: #151413;
+    --c-border:      #3A3835;
+    --c-divider:     #2A2826;
 
-    --c-text:        #F4F4F5;
-    --c-text-2:      #A1A1AA;
-    --c-text-3:      #71717A;
+    --c-text:        #EDECE9;
+    --c-text-2:      #A0A0A0;
+    --c-text-3:      #6B6B6B;
 
-    --c-accent:      #818CF8;
-    --c-accent-hover:#A5B4FC;
-    --c-accent-soft: rgba(129, 140, 248, 0.1);
-    --c-accent-ring: rgba(129, 140, 248, 0.2);
+    --c-accent:      #B8B8C8;
+    --c-accent-hover:#D0D0E0;
+    --c-accent-soft: rgba(184, 184, 200, 0.08);
+    --c-accent-ring: rgba(184, 184, 200, 0.15);
 
-    --c-danger:      #F87171;
-    --c-danger-soft: rgba(248, 113, 113, 0.1);
-    --c-success:     #4ADE80;
-    --c-success-soft:rgba(74, 222, 128, 0.1);
+    --c-danger:      #E8715A;
+    --c-danger-soft: rgba(232, 113, 90, 0.1);
+    --c-success:     #6BCB77;
+    --c-success-soft:rgba(107, 203, 119, 0.1);
 
-    --shadow-xs:     0 1px 2px rgba(0,0,0,0.2);
-    --shadow-sm:     0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-    --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
+    --tag-rose:      rgba(139, 94, 84, 0.2);
+    --tag-rose-text: #D4A090;
+    --tag-sky:       rgba(78, 107, 130, 0.2);
+    --tag-sky-text:  #90B8D4;
+    --tag-sage:      rgba(78, 107, 78, 0.2);
+    --tag-sage-text: #90C890;
+    --tag-amber:     rgba(122, 101, 68, 0.2);
+    --tag-amber-text:#D4B890;
+
+    --shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+    --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.45);
   }
 }
 
 /* ---- Dark Theme (manual) ---- */
 [data-theme='dark'] {
-  --c-bg:          #111113;
-  --c-surface:     #1C1C1F;
-  --c-surface-dim: #17171A;
-  --c-border:      #3F3F46;
-  --c-divider:     #27272A;
+  --c-bg:          #111110;
+  --c-surface:     #1A1918;
+  --c-surface-dim: #151413;
+  --c-border:      #3A3835;
+  --c-divider:     #2A2826;
 
-  --c-text:        #F4F4F5;
-  --c-text-2:      #A1A1AA;
-  --c-text-3:      #71717A;
+  --c-text:        #EDECE9;
+  --c-text-2:      #A0A0A0;
+  --c-text-3:      #6B6B6B;
 
-  --c-accent:      #818CF8;
-  --c-accent-hover:#A5B4FC;
-  --c-accent-soft: rgba(129, 140, 248, 0.1);
-  --c-accent-ring: rgba(129, 140, 248, 0.2);
+  --c-accent:      #B8B8C8;
+  --c-accent-hover:#D0D0E0;
+  --c-accent-soft: rgba(184, 184, 200, 0.08);
+  --c-accent-ring: rgba(184, 184, 200, 0.15);
 
-  --c-danger:      #F87171;
-  --c-danger-soft: rgba(248, 113, 113, 0.1);
-  --c-success:     #4ADE80;
-  --c-success-soft:rgba(74, 222, 128, 0.1);
+  --c-danger:      #E8715A;
+  --c-danger-soft: rgba(232, 113, 90, 0.1);
+  --c-success:     #6BCB77;
+  --c-success-soft:rgba(107, 203, 119, 0.1);
 
-  --shadow-xs:     0 1px 2px rgba(0,0,0,0.2);
-  --shadow-sm:     0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
+  --tag-rose:      rgba(139, 94, 84, 0.2);
+  --tag-rose-text: #D4A090;
+  --tag-sky:       rgba(78, 107, 130, 0.2);
+  --tag-sky-text:  #90B8D4;
+  --tag-sage:      rgba(78, 107, 78, 0.2);
+  --tag-sage-text: #90C890;
+  --tag-amber:     rgba(122, 101, 68, 0.2);
+  --tag-amber-text:#D4B890;
+
+  --shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg:     0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
 /* ---- Base Reset ---- */
@@ -128,9 +179,22 @@
 
 body {
   min-height: 100dvh;
+  position: relative;
+}
+
+/* ---- Noise Texture Overlay ---- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
 }
 
 ::selection {
-  background: var(--c-accent-soft);
+  background: rgba(61, 61, 78, 0.12);
   color: var(--c-text);
 }
