@@ -1,141 +1,139 @@
+/* ============================================
+   Design Tokens — Soft Structuralism
+   Chinese-optimized, no external fonts
+   ============================================ */
+
 :root {
-  /* Light theme — Soft Structuralism */
-  --todo-bg: oklch(0.985 0.001 90);
-  --todo-bg-elevated: oklch(1 0 0);
-  --todo-bg-inset: oklch(0.97 0.002 90);
-  --todo-text: oklch(0.15 0.01 90);
-  --todo-text-secondary: oklch(0.5 0.01 90);
-  --todo-text-tertiary: oklch(0.65 0.008 90);
-  --todo-border: oklch(0.92 0.003 90);
-  --todo-divider: oklch(0.94 0.002 90);
-  --todo-accent: oklch(0.55 0.22 260);
-  --todo-accent-soft: oklch(0.92 0.04 260);
-  --todo-accent-hover: oklch(0.48 0.24 260);
-  --todo-danger: oklch(0.6 0.22 25);
-  --todo-danger-soft: oklch(0.95 0.03 25);
-  --todo-danger-hover: oklch(0.53 0.24 25);
-  --todo-success: oklch(0.7 0.17 155);
-  --todo-success-soft: oklch(0.94 0.03 155);
-  --todo-warning: oklch(0.78 0.16 75);
-  --todo-shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
-  --todo-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
-  --todo-shadow-md: 0 4px 16px oklch(0 0 0 / 0.08), 0 2px 4px oklch(0 0 0 / 0.04);
-  --todo-shadow-lg: 0 8px 32px oklch(0 0 0 / 0.1), 0 4px 8px oklch(0 0 0 / 0.04);
-  --todo-shadow-glow: 0 0 0 1px oklch(0.55 0.22 260 / 0.15), 0 4px 16px oklch(0.55 0.22 260 / 0.1);
-  --todo-overdue-bg: oklch(0.95 0.04 25);
-  --todo-overdue-text: oklch(0.45 0.18 25);
-  --todo-tag-blue: oklch(0.93 0.04 260);
-  --todo-tag-green: oklch(0.93 0.04 155);
-  --todo-tag-yellow: oklch(0.94 0.05 85);
-  --todo-tag-red: oklch(0.93 0.04 25);
-  --todo-tag-purple: oklch(0.93 0.04 300);
-  --todo-radius-sm: 8px;
-  --todo-radius-md: 12px;
-  --todo-radius-lg: 16px;
-  --todo-radius-xl: 20px;
-  --todo-radius-pill: 9999px;
+  /* ---- Color: Neutral Scale (Zinc-tinted warm) ---- */
+  --c-bg:          #FAFAFA;
+  --c-surface:     #FFFFFF;
+  --c-surface-dim: #F4F4F5;
+  --c-border:      #E4E4E7;
+  --c-border-faint:#F0F0F2;
+  --c-divider:     #E8E8EC;
 
-  /* Fluid spring easing */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* ---- Color: Text ---- */
+  --c-text:        #18181B;
+  --c-text-2:      #52525B;
+  --c-text-3:      #A1A1AA;
+  --c-text-inv:    #FAFAFA;
+
+  /* ---- Color: Accent (Indigo, muted < 80% sat) ---- */
+  --c-accent:      #4F46E5;
+  --c-accent-hover:#4338CA;
+  --c-accent-soft: #EEF2FF;
+  --c-accent-ring: rgba(79, 70, 229, 0.15);
+
+  /* ---- Color: Semantic ---- */
+  --c-danger:      #DC2626;
+  --c-danger-soft: #FEF2F2;
+  --c-success:     #16A34A;
+  --c-success-soft:#F0FDF4;
+
+  /* ---- Color: Shadows ---- */
+  --shadow-xs:     0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.07);
+  --shadow-focus:  0 0 0 3px var(--c-accent-ring);
+
+  /* ---- Radius ---- */
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-pill:9999px;
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
-  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color-scheme: light dark;
-  color: var(--todo-text);
-  background: var(--todo-bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  /* ---- Typography ---- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei",
+               "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", Consolas,
+               "Source Code Pro", monospace;
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
-  letter-spacing: -0.01em;
+  font-feature-settings: "kern" 1;
+  color-scheme: light dark;
 }
 
-/* Dark theme — auto */
+/* ---- Dark Theme (auto) ---- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --todo-bg: oklch(0.13 0.005 260);
-    --todo-bg-elevated: oklch(0.17 0.008 260);
-    --todo-bg-inset: oklch(0.11 0.005 260);
-    --todo-text: oklch(0.9 0.005 90);
-    --todo-text-secondary: oklch(0.6 0.008 90);
-    --todo-text-tertiary: oklch(0.45 0.008 90);
-    --todo-border: oklch(0.25 0.008 260);
-    --todo-divider: oklch(0.22 0.008 260);
-    --todo-accent: oklch(0.72 0.18 260);
-    --todo-accent-soft: oklch(0.22 0.06 260);
-    --todo-accent-hover: oklch(0.78 0.14 260);
-    --todo-danger: oklch(0.7 0.18 25);
-    --todo-danger-soft: oklch(0.22 0.05 25);
-    --todo-danger-hover: oklch(0.77 0.16 25);
-    --todo-success: oklch(0.78 0.14 155);
-    --todo-success-soft: oklch(0.22 0.04 155);
-    --todo-warning: oklch(0.84 0.13 75);
-    --todo-shadow-xs: 0 1px 2px oklch(0 0 0 / 0.15);
-    --todo-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.2), 0 1px 2px oklch(0 0 0 / 0.15);
-    --todo-shadow-md: 0 4px 16px oklch(0 0 0 / 0.3), 0 2px 4px oklch(0 0 0 / 0.15);
-    --todo-shadow-lg: 0 8px 32px oklch(0 0 0 / 0.4), 0 4px 8px oklch(0 0 0 / 0.2);
-    --todo-shadow-glow: 0 0 0 1px oklch(0.72 0.18 260 / 0.2), 0 4px 16px oklch(0.72 0.18 260 / 0.15);
-    --todo-overdue-bg: oklch(0.25 0.06 25);
-    --todo-overdue-text: oklch(0.75 0.14 25);
-    --todo-tag-blue: oklch(0.25 0.06 260);
-    --todo-tag-green: oklch(0.25 0.06 155);
-    --todo-tag-yellow: oklch(0.25 0.06 85);
-    --todo-tag-red: oklch(0.25 0.06 25);
-    --todo-tag-purple: oklch(0.25 0.06 300);
+    --c-bg:          #111113;
+    --c-surface:     #1C1C1F;
+    --c-surface-dim: #17171A;
+    --c-border:      #27272A;
+    --c-border-faint:#1F1F22;
+    --c-divider:     #232326;
+
+    --c-text:        #F4F4F5;
+    --c-text-2:      #A1A1AA;
+    --c-text-3:      #71717A;
+
+    --c-accent:      #818CF8;
+    --c-accent-hover:#A5B4FC;
+    --c-accent-soft: rgba(129, 140, 248, 0.1);
+    --c-accent-ring: rgba(129, 140, 248, 0.2);
+
+    --c-danger:      #F87171;
+    --c-danger-soft: rgba(248, 113, 113, 0.1);
+    --c-success:     #4ADE80;
+    --c-success-soft:rgba(74, 222, 128, 0.1);
+
+    --shadow-xs:     0 1px 2px rgba(0,0,0,0.2);
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
   }
 }
 
-/* Dark theme — manual */
+/* ---- Dark Theme (manual) ---- */
 [data-theme='dark'] {
-  --todo-bg: oklch(0.13 0.005 260);
-  --todo-bg-elevated: oklch(0.17 0.008 260);
-  --todo-bg-inset: oklch(0.11 0.005 260);
-  --todo-text: oklch(0.9 0.005 90);
-  --todo-text-secondary: oklch(0.6 0.008 90);
-  --todo-text-tertiary: oklch(0.45 0.008 90);
-  --todo-border: oklch(0.25 0.008 260);
-  --todo-divider: oklch(0.22 0.008 260);
-  --todo-accent: oklch(0.72 0.18 260);
-  --todo-accent-soft: oklch(0.22 0.06 260);
-  --todo-accent-hover: oklch(0.78 0.14 260);
-  --todo-danger: oklch(0.7 0.18 25);
-  --todo-danger-soft: oklch(0.22 0.05 25);
-  --todo-danger-hover: oklch(0.77 0.16 25);
-  --todo-success: oklch(0.78 0.14 155);
-  --todo-success-soft: oklch(0.22 0.04 155);
-  --todo-warning: oklch(0.84 0.13 75);
-  --todo-shadow-xs: 0 1px 2px oklch(0 0 0 / 0.15);
-  --todo-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.2), 0 1px 2px oklch(0 0 0 / 0.15);
-  --todo-shadow-md: 0 4px 16px oklch(0 0 0 / 0.3), 0 2px 4px oklch(0 0 0 / 0.15);
-  --todo-shadow-lg: 0 8px 32px oklch(0 0 0 / 0.4), 0 4px 8px oklch(0 0 0 / 0.2);
-  --todo-shadow-glow: 0 0 0 1px oklch(0.72 0.18 260 / 0.2), 0 4px 16px oklch(0.72 0.18 260 / 0.15);
-  --todo-overdue-bg: oklch(0.25 0.06 25);
-  --todo-overdue-text: oklch(0.75 0.14 25);
-  --todo-tag-blue: oklch(0.25 0.06 260);
-  --todo-tag-green: oklch(0.25 0.06 155);
-  --todo-tag-yellow: oklch(0.25 0.06 85);
-  --todo-tag-red: oklch(0.25 0.06 25);
-  --todo-tag-purple: oklch(0.25 0.06 300);
+  --c-bg:          #111113;
+  --c-surface:     #1C1C1F;
+  --c-surface-dim: #17171A;
+  --c-border:      #27272A;
+  --c-border-faint:#1F1F22;
+  --c-divider:     #232326;
+
+  --c-text:        #F4F4F5;
+  --c-text-2:      #A1A1AA;
+  --c-text-3:      #71717A;
+
+  --c-accent:      #818CF8;
+  --c-accent-hover:#A5B4FC;
+  --c-accent-soft: rgba(129, 140, 248, 0.1);
+  --c-accent-ring: rgba(129, 140, 248, 0.2);
+
+  --c-danger:      #F87171;
+  --c-danger-soft: rgba(248, 113, 113, 0.1);
+  --c-success:     #4ADE80;
+  --c-success-soft:rgba(74, 222, 128, 0.1);
+
+  --shadow-xs:     0 1px 2px rgba(0,0,0,0.2);
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* ---- Base Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  margin: 0;
   min-height: 100dvh;
-  background: var(--todo-bg);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 ::selection {
-  background: oklch(0.55 0.22 260 / 0.2);
-  color: var(--todo-text);
+  background: var(--c-accent-soft);
+  color: var(--c-text);
 }
