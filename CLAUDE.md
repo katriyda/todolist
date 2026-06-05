@@ -61,3 +61,17 @@ public/
 - `imagegen-frontend-web` / `imagegen-frontend-mobile` — Web/移动端 UI 生成
 
 开发 UI 时可参考这些 skill 的 SKILL.md 获取设计指导。
+
+## Agent skills
+
+### Issue tracker
+
+Issues live as markdown files in `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Uses five canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context layout with `CONTEXT.md` at the repo root and `docs/adr/` for architectural decisions. See `docs/agents/domain.md`.
