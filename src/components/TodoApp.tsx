@@ -20,9 +20,6 @@ export function TodoApp() {
   >([])
   const [, setStoredTodos] = useLocalStorage<Todo[]>('todos', [])
 
-  // Persist todos
-  // (handled by useLocalStorage, synced via useEffect in useTodos in a real app)
-
   const displayTodos = searchResults ?? filteredTodos
 
   const handleSearchResults = useCallback((results: Todo[] | null) => {
@@ -54,7 +51,6 @@ export function TodoApp() {
     const todo = state.todos.find((t) => t.id === id)
     if (!todo) return
 
-    // Show toast with undo
     const toastId = crypto.randomUUID()
     setToasts((prev) => [
       ...prev,
@@ -68,7 +64,6 @@ export function TodoApp() {
       },
     ])
 
-    // Delay actual delete (toast will auto-dismiss after 5s)
     dispatch({ type: 'DELETE', payload: { id } })
   }
 
@@ -104,7 +99,6 @@ export function TodoApp() {
       const todos = parseImportData(text)
       if (todos) {
         setStoredTodos(todos)
-        // Reload would be needed in a real app; for now just log
       }
     }
     reader.readAsText(file)
@@ -115,13 +109,20 @@ export function TodoApp() {
     <div className="todo-app">
       <div className="todo-actions">
         <button type="button" onClick={toggleTheme}>
-          {theme === 'light' ? '🌙 深色' : '☀️ 浅色'}
+          {theme === 'light' ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          )}
+          {theme === 'light' ? '深色' : '浅色'}
         </button>
         <button type="button" onClick={handleExport}>
-          📤 导出
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          导出
         </button>
         <label>
-          📥 导入
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          导入
           <input
             type="file"
             accept=".json"
@@ -130,7 +131,17 @@ export function TodoApp() {
           />
         </label>
       </div>
-      <h1>待办事项</h1>
+
+      <div className="todo-header">
+        <div className="todo-eyebrow">Task Manager</div>
+        <h1>待办事项</h1>
+        <p className="todo-subtitle">
+          {activeCount > 0
+            ? `${activeCount} 项任务等待完成`
+            : '所有任务已完成'}
+        </p>
+      </div>
+
       <TodoInput onAdd={handleAdd} />
       <TodoSearch todos={state.todos} onResults={handleSearchResults} />
       <TodoFilters

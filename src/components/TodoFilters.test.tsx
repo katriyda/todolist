@@ -71,7 +71,8 @@ describe('TodoFilters', () => {
       />,
     )
 
-    expect(screen.getByText('5 项未完成')).toBeInTheDocument()
+    expect(screen.getByText('5')).toBeInTheDocument()
+    expect(screen.getByText('项未完成')).toBeInTheDocument()
   })
 
   it('should call onClearCompleted when clicking clear button', async () => {

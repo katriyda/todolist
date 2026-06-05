@@ -41,7 +41,7 @@ describe('TodoList', () => {
       <TodoList todos={[]} onToggle={noop} onEdit={noop} onDelete={noop} />,
     )
 
-    expect(screen.getByText('暂无任务')).toBeInTheDocument()
+    expect(screen.getByText('暂无任务，添加一个开始吧')).toBeInTheDocument()
   })
 
   it('should show filtered-empty state when filter yields nothing', () => {

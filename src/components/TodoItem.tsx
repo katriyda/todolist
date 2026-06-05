@@ -58,6 +58,7 @@ export const TodoItem = memo(function TodoItem({
         <input
           ref={inputRef}
           type="text"
+          className="todo-text-input"
           value={editText}
           onChange={(e) => setEditText(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -68,15 +69,46 @@ export const TodoItem = memo(function TodoItem({
   }
 
   return (
-    <li className="todo-item">
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => onToggle(todo.id)}
-      />
-      <span onDoubleClick={handleDoubleClick}>{todo.text}</span>
-      <button type="button" onClick={() => onDelete(todo.id)}>
-        删除
+    <li className={`todo-item${todo.completed ? ' completed' : ''}`}>
+      <div className="checkbox-wrapper">
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => onToggle(todo.id)}
+        />
+        <div className="checkbox-visual">
+          <svg viewBox="0 0 12 12">
+            <polyline points="2 6 5 9 10 3" />
+          </svg>
+        </div>
+      </div>
+      <div className="todo-content">
+        <span className="todo-text" onDoubleClick={handleDoubleClick}>
+          {todo.text}
+        </span>
+        {todo.dueDate && (
+          <span className={`due-date${new Date(todo.dueDate).getTime() < Date.now() && !todo.completed ? ' overdue' : ''}`}>
+            <svg className="due-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {new Date(todo.dueDate).toLocaleDateString('zh-CN')}
+          </span>
+        )}
+        {todo.tags && todo.tags.length > 0 && (
+          <div className="tag-chips">
+            {todo.tags.map((tag) => (
+              <span key={tag} className="tag-chip">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <button
+        type="button"
+        className="delete-btn"
+        onClick={() => onDelete(todo.id)}
+        aria-label="删除"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </li>
   )

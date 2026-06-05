@@ -14,10 +14,18 @@ export function TodoList({
   onToggle,
   onEdit,
   onDelete,
-  emptyMessage = '暂无任务',
+  emptyMessage = '暂无任务，添加一个开始吧',
 }: TodoListProps) {
   if (todos.length === 0) {
-    return <p>{emptyMessage}</p>
+    return (
+      <div className="todo-empty">
+        <svg className="todo-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+        </svg>
+        <p>{emptyMessage}</p>
+      </div>
+    )
   }
 
   return (

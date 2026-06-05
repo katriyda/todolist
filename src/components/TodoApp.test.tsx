@@ -22,7 +22,7 @@ describe('TodoApp', () => {
   it('should show empty state when no todos', () => {
     render(<TodoApp />)
 
-    expect(screen.getByText('暂无任务')).toBeInTheDocument()
+    expect(screen.getByText('暂无任务，添加一个开始吧')).toBeInTheDocument()
   })
 
   it('should add a todo via input', async () => {
@@ -33,7 +33,7 @@ describe('TodoApp', () => {
     await user.type(input, '买菜{Enter}')
 
     expect(screen.getByText('买菜')).toBeInTheDocument()
-    expect(screen.queryByText('暂无任务')).not.toBeInTheDocument()
+    expect(screen.queryByText('暂无任务，添加一个开始吧')).not.toBeInTheDocument()
   })
 
   it('should toggle a todo', async () => {
@@ -87,7 +87,7 @@ describe('TodoApp', () => {
     await user.click(screen.getByRole('button', { name: '删除' }))
 
     expect(screen.queryByText('要删除的')).not.toBeInTheDocument()
-    expect(screen.getByText('暂无任务')).toBeInTheDocument()
+    expect(screen.getByText('暂无任务，添加一个开始吧')).toBeInTheDocument()
   })
 
   it('should edit a todo via double click', async () => {
@@ -114,10 +114,12 @@ describe('TodoApp', () => {
     await user.type(input, 'B{Enter}')
     await user.type(input, 'C{Enter}')
 
-    expect(screen.getByText('3 项未完成')).toBeInTheDocument()
+    expect(screen.getByText('3')).toBeInTheDocument()
+    expect(screen.getByText('项未完成')).toBeInTheDocument()
 
     await user.click(screen.getAllByRole('checkbox')[0])
 
-    expect(screen.getByText('2 项未完成')).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
+    expect(screen.getByText('项未完成')).toBeInTheDocument()
   })
 })

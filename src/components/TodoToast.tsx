@@ -15,7 +15,7 @@ export function TodoToast({ message, onUndo, onDismiss }: TodoToastProps) {
   return (
     <div className="todo-toast" role="alert">
       <span>{message}</span>
-      <button type="button" onClick={onUndo}>
+      <button type="button" className="undo-btn" onClick={onUndo}>
         撤销
       </button>
     </div>

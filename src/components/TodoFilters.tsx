@@ -23,7 +23,9 @@ export function TodoFilters({
 }: TodoFiltersProps) {
   return (
     <div className="todo-filters">
-      <span>{activeCount} 项未完成</span>
+      <span className="count-label">
+        <strong>{activeCount}</strong> 项未完成
+      </span>
       <div className="filter-buttons">
         {filters.map((f) => (
           <button
@@ -37,7 +39,11 @@ export function TodoFilters({
         ))}
       </div>
       {completedCount > 0 && (
-        <button type="button" onClick={onClearCompleted}>
+        <button
+          type="button"
+          className="clear-completed-btn"
+          onClick={onClearCompleted}
+        >
           清除已完成
         </button>
       )}
